@@ -76,18 +76,18 @@ void loop() {
   la3 = (analogRead(s3) >= 750)? "1" : "0"; 
   la4 = (analogRead(s4) >= 750)? "1" : "0"; 
 
-  output = sw1 + 
-           sw2 +
-           sw3 +
-           sw4 +
-           sw5 +
-           sw6 +
-           sw7 +
-           sw8 +
-           sw9 +
-           sw10 +
+  output = sw12 + 
            sw11 +
-           sw12 + 
+           sw10 +
+           sw9 +
+           sw8 +
+           sw7 +
+           sw6 +
+           sw5 +
+           sw4 +
+           sw3 +
+           sw2 +
+           sw1 + 
            "0" +
            la1 +
            la2 +
@@ -96,6 +96,6 @@ void loop() {
 
   Serial.println(output);
   
-  delay (3000);
+  delay (500);
 
 }
