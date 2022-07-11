@@ -20,7 +20,26 @@
 
 int b[] = {b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12};
 int s[] = {s1, s2, s3, s4};
-  
+
+String sw1;
+String sw2;
+String sw3;
+String sw4;
+String sw5;
+String sw6;
+String sw7;
+String sw8;
+String sw9;
+String sw10;
+String sw11;
+String sw12;
+
+String la1;
+String la2;
+String la3;
+String la4;
+
+String output;
 
 void setup() {
   // put your setup code here, to run once:
@@ -38,51 +57,45 @@ for (int i = 1; i >= 12; i++)
 }
 
 void loop() {
-  Serial.print("s1:");
-  Serial.println(analogRead(s1));
-   Serial.print("s2:");
-    Serial.println(analogRead(s2));
-     Serial.print("s3:");
-      Serial.println(analogRead(s3));
-       Serial.print("s4:");
-        Serial.println(analogRead(s4));
-   delay(10);
+    
+  sw1 = String(!digitalRead (b1));
+  sw2 = String(!digitalRead (b2));
+  sw3 = String(!digitalRead (b3));
+  sw4 = String(!digitalRead (b4));
+  sw5 = String(!digitalRead (b5));
+  sw6 = String(!digitalRead (b6));
+  sw7 = String(!digitalRead (b7));
+  sw8 = String(!digitalRead (b8));
+  sw9 = String(!digitalRead (b9));
+  sw10 = String(!digitalRead (b10));
+  sw11 = String(!digitalRead (b11));
+  sw12 = String(!digitalRead (b12));
+  
+  la1 = (analogRead(s1) >= 750)? "1" : "0"; 
+  la2 = (analogRead(s2) >= 750)? "1" : "0"; 
+  la3 = (analogRead(s3) >= 750)? "1" : "0"; 
+  la4 = (analogRead(s4) >= 750)? "1" : "0"; 
 
-Serial.print("1:");
- Serial.println(!digitalRead (b1));
+  output = sw1 + 
+           sw2 +
+           sw3 +
+           sw4 +
+           sw5 +
+           sw6 +
+           sw7 +
+           sw8 +
+           sw9 +
+           sw10 +
+           sw11 +
+           sw12 + 
+           "0" +
+           la1 +
+           la2 +
+           la3 +
+           la4;
 
- Serial.print("2:");
- Serial.println(!digitalRead (b2));
+  Serial.println(output);
+  
+  delay (3000);
 
- Serial.print("3:");
- Serial.println(!digitalRead (b3));
-
- Serial.print("4:");
- Serial.println(!digitalRead (b4));
-
- Serial.print("5:");
- Serial.println(!digitalRead (b5));
-
- Serial.print("6:");
- Serial.println(!digitalRead (b6));
-
- Serial.print("7:");
- Serial.println(!digitalRead (b7));
-
- Serial.print("8:");
- Serial.println(!digitalRead (b8));
-
- Serial.print("9:");
- Serial.println(!digitalRead (b9));
-
-Serial.print("10:");
- Serial.println(!digitalRead (b10));
-
- Serial.print("11:");
- Serial.println(!digitalRead (b11));
-
- Serial.print("12:");
- Serial.println(!digitalRead (b12));
-
-delay (3000);
 }
