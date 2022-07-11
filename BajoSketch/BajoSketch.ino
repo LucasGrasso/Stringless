@@ -1,16 +1,17 @@
 //-----------Defines----------
-#define sw1 40
-#define sw2 41
-#define sw3 38
-#define sw4 39
-#define sw5 36
-#define sw6 37
-#define sw7 34
-#define sw8 35
-#define sw9 32
-#define sw10 33
-#define sw11 30
-#define sw12 31
+#define b1 30
+#define b2 31
+#define b3 32
+#define b4 33
+#define b5 34
+#define b6 35
+
+#define b7 36
+#define b8 37
+#define b9 38
+#define b10 39
+#define b11 40
+#define b12 41
 
 #define laser1 A0
 #define laser2 A1
@@ -38,45 +39,44 @@ String la4;
 
 
 void setup() {
-  pinMode(sw1,INPUT);
-  pinMode(sw2,INPUT);
-  pinMode(sw3,INPUT);
-  pinMode(sw4,INPUT);
-  pinMode(sw5,INPUT);
-  pinMode(sw6,INPUT);
-  pinMode(sw7,INPUT);
-  pinMode(sw8,INPUT);
-  pinMode(sw9,INPUT);
-  pinMode(sw10,INPUT);
-  pinMode(sw11,INPUT);
-  pinMode(sw12,INPUT);
+  pinMode(b1,INPUT);
+  pinMode(b2,INPUT);
+  pinMode(b3,INPUT);
+  pinMode(b4,INPUT);
+  pinMode(b5,INPUT);
+  pinMode(b6,INPUT);
+  pinMode(b7,INPUT);
+  pinMode(b8,INPUT);
+  pinMode(b9,INPUT);
+  pinMode(b10,INPUT);
+  pinMode(b11,INPUT);
+  pinMode(b12,INPUT);
   Serial.begin(9600);
 }
 
 void loop() {
 
   //--------------MicroSwitches----------------
-  vb0 = String(!(digitalRead(sw1)));
-  vb1 = String(!(digitalRead(sw2)));
-  vb1 = String(!(digitalRead(sw3)));
-  vb1 = String(!(digitalRead(sw4)));
-  vb5 = String(!(digitalRead(sw5)));
-  vb6 = String(!(digitalRead(sw6)));
-  vb7 = String(!(digitalRead(sw7)));
-  vb8 = String(!(digitalRead(sw8)));
-  vb9 = String(!(digitalRead(sw9)));
-  vb10 = String(!(digitalRead(sw10)));
-  vb11 = String(!(digitalRead(sw11)));
-  vb12 = String(!(digitalRead(sw12)));
-
-  Serial.println(analogRead(laser1));
+  vb0 = String(!(digitalRead(b1)));
+  vb1 = String(!(digitalRead(b2)));
+  vb1 = String(!(digitalRead(b3)));
+  vb1 = String(!(digitalRead(b4)));
+  vb5 = String(!(digitalRead(b5)));
+  vb6 = String(!(digitalRead(b6)));
+  vb7 = String(!(digitalRead(b7)));
+  vb8 = String(!(digitalRead(b8)));
+  vb9 = String(!(digitalRead(b9)));
+  vb10 = String(!(digitalRead(b10)));
+  vb11 = String(!(digitalRead(b11)));
+  vb12 = String(!(digitalRead(b12)));
+  
   la1 = (analogRead(laser1) >= 750)? "1" : "0"; 
   la2 = (analogRead(laser2) >= 750)? "1" : "0"; 
   la3 = (analogRead(laser3) >= 750)? "1" : "0"; 
   la4 = (analogRead(laser4) >= 750)? "1" : "0"; 
 
   //------------PRINT--------------
-  Serial.println(
+  Serial.print(
     vb1 +
     vb2 +
     vb3 +
