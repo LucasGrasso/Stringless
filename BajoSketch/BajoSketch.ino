@@ -1,4 +1,9 @@
-//-----------Defines----------
+#define s1 A0
+#define s2 A1
+#define s3 A2
+#define s4 A3
+
+
 #define b1 30
 #define b2 31
 #define b3 32
@@ -13,88 +18,84 @@
 #define b11 40
 #define b12 41
 
-#define laser1 A0
-#define laser2 A1
-#define laser3 A2
-#define laser4 A3
+int b[] = {b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12};
+int s[] = {s1, s2, s3, s4};
 
-String vb0;
-String vb1;
-String vb2;
-String vb3;
-String vb4;
-String vb5;
-String vb6;
-String vb7;
-String vb8;
-String vb9;
-String vb10;
-String vb11;
-String vb12;
+String sw1;
+String sw2;
+String sw3;
+String sw4;
+String sw5;
+String sw6;
+String sw7;
+String sw8;
+String sw9;
+String sw10;
+String sw11;
+String sw12;
 
 String la1;
 String la2;
 String la3;
 String la4;
 
+String output;
 
 void setup() {
-  pinMode(b1,INPUT);
-  pinMode(b2,INPUT);
-  pinMode(b3,INPUT);
-  pinMode(b4,INPUT);
-  pinMode(b5,INPUT);
-  pinMode(b6,INPUT);
-  pinMode(b7,INPUT);
-  pinMode(b8,INPUT);
-  pinMode(b9,INPUT);
-  pinMode(b10,INPUT);
-  pinMode(b11,INPUT);
-  pinMode(b12,INPUT);
+  // put your setup code here, to run once:
   Serial.begin(9600);
+  
+ for (int i = 1; i >= 4; i++)
+{
+  pinMode (s[i], INPUT);
+}     
+
+for (int i = 1; i >= 12; i++)
+{
+  pinMode (b[i], INPUT);
+}                       
 }
 
 void loop() {
-
-  //--------------MicroSwitches----------------
-  vb0 = String(!(digitalRead(b1)));
-  vb1 = String(!(digitalRead(b2)));
-  vb1 = String(!(digitalRead(b3)));
-  vb1 = String(!(digitalRead(b4)));
-  vb5 = String(!(digitalRead(b5)));
-  vb6 = String(!(digitalRead(b6)));
-  vb7 = String(!(digitalRead(b7)));
-  vb8 = String(!(digitalRead(b8)));
-  vb9 = String(!(digitalRead(b9)));
-  vb10 = String(!(digitalRead(b10)));
-  vb11 = String(!(digitalRead(b11)));
-  vb12 = String(!(digitalRead(b12)));
+    
+  sw1 = String(!digitalRead (b1));
+  sw2 = String(!digitalRead (b2));
+  sw3 = String(!digitalRead (b3));
+  sw4 = String(!digitalRead (b4));
+  sw5 = String(!digitalRead (b5));
+  sw6 = String(!digitalRead (b6));
+  sw7 = String(!digitalRead (b7));
+  sw8 = String(!digitalRead (b8));
+  sw9 = String(!digitalRead (b9));
+  sw10 = String(!digitalRead (b10));
+  sw11 = String(!digitalRead (b11));
+  sw12 = String(!digitalRead (b12));
   
-  la1 = (analogRead(laser1) >= 750)? "1" : "0"; 
-  la2 = (analogRead(laser2) >= 750)? "1" : "0"; 
-  la3 = (analogRead(laser3) >= 750)? "1" : "0"; 
-  la4 = (analogRead(laser4) >= 750)? "1" : "0"; 
+  la1 = (analogRead(s1) >= 750)? "1" : "0"; 
+  la2 = (analogRead(s2) >= 750)? "1" : "0"; 
+  la3 = (analogRead(s3) >= 750)? "1" : "0"; 
+  la4 = (analogRead(s4) >= 750)? "1" : "0"; 
 
-  //------------PRINT--------------
-  Serial.print(
-    vb1 +
-    vb2 +
-    vb3 +
-    vb4 +
-    vb5 +
-    vb6 +
-    vb7 +
-    vb8 +
-    vb9 +
-    vb10 +
-    vb11 +
-    vb12 +
-    "0" +
-    la1 +
-    la2 +
-    la3 +
-    la4
-  );
-  //---------DELAY--------------------
-  delay(500);
+  output = sw12 + 
+           sw11 +
+           sw10 +
+           sw9 +
+           sw8 +
+           sw7 +
+           sw6 +
+           sw5 +
+           sw4 +
+           sw3 +
+           sw2 +
+           sw1 + 
+           "0" +
+           la1 +
+           la2 +
+           la3 +
+           la4;
+
+  Serial.println(output);
+  
+  delay (500);
+
 }
