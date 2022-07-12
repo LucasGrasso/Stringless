@@ -6,6 +6,7 @@ import pygame
 
 pygame.init()
 pygame.mixer.init()
+clock = pygame.time.Clock()
 
 notas = {}
 
