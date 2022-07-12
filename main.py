@@ -1,8 +1,6 @@
 import csv
 import serial
-import multiprocessing
 import winsound
-import os
 
 notas = {}
 
