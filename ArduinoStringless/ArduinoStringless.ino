@@ -40,9 +40,9 @@ String la3;
 String la4;
 
 String lasers;
-String mlasers;
 
 String output;
+String mOutput;
 
 unsigned int c;
 
@@ -81,11 +81,7 @@ void loop() {
   la3 = (analogRead(s3) >= 750) ? "1" : "0";
   la4 = (analogRead(s4) >= 750) ? "1" : "0";
 
-  lasers = la1 + la2 + la3 + la4;
-
-  if (lasers != mlasers) {
-    mlasers = lasers;
-    output = sw12 +
+   output = sw12 +
              sw11 +
              sw10 +
              sw9 +
@@ -98,9 +94,14 @@ void loop() {
              sw2 +
              sw1 +
              "0" +
-             lasers;
-
+             la1 + 
+             la2 + 
+             la3 +
+             la4;
+             
+  if (output != mOutput) {
+    mOutput = output;
     Serial.println(output);
   }
-  delay(150);
+  delay(25);
 }
