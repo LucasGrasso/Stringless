@@ -1,4 +1,3 @@
-from ast import arg
 import csv
 import serial
 import winsound
@@ -33,6 +32,6 @@ while True :
         if strParsedInt in keys:
             # Play note
             note = notas[strParsedInt]
-            pygame.mixer.music.load(note)
-            pygame.mixer.music.play(0)
-            print(notas[strParsedInt])
+            SOUND = pygame.mixer.Sound(note)
+            SOUND.play()
+            print(note.split("/")[1].split(".")[0].replace("S", "#"))
