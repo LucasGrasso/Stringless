@@ -1,7 +1,7 @@
-#define s1 A0
-#define s2 A1
-#define s3 A2
-#define s4 A3
+#define s1 A3
+#define s2 A2
+#define s3 A1
+#define s4 A0
 
 
 #define b1 30
@@ -39,25 +39,30 @@ String la2;
 String la3;
 String la4;
 
+String lasers;
+String mlasers;
+
 String output;
+
+unsigned int c;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  
- for (int i = 1; i >= 4; i++)
-{
-  pinMode (s[i], INPUT);
-}     
 
-for (int i = 1; i >= 12; i++)
-{
-  pinMode (b[i], INPUT);
-}                       
+  for (int i = 1; i >= 4; i++)
+  {
+    pinMode (s[i], INPUT);
+  }
+
+  for (int i = 1; i >= 12; i++)
+  {
+    pinMode (b[i], INPUT);
+  }
 }
 
 void loop() {
-    
+
   sw1 = String(!digitalRead (b1));
   sw2 = String(!digitalRead (b2));
   sw3 = String(!digitalRead (b3));
@@ -70,32 +75,32 @@ void loop() {
   sw10 = String(!digitalRead (b10));
   sw11 = String(!digitalRead (b11));
   sw12 = String(!digitalRead (b12));
-  
-  la1 = (analogRead(s1) >= 750)? "1" : "0"; 
-  la2 = (analogRead(s2) >= 750)? "1" : "0"; 
-  la3 = (analogRead(s3) >= 750)? "1" : "0"; 
-  la4 = (analogRead(s4) >= 750)? "1" : "0"; 
 
-  output = sw12 + 
-           sw11 +
-           sw10 +
-           sw9 +
-           sw8 +
-           sw7 +
-           sw6 +
-           sw5 +
-           sw4 +
-           sw3 +
-           sw2 +
-           sw1 + 
-           "0" +
-           la1 +
-           la2 +
-           la3 +
-           la4;
+  la1 = (analogRead(s1) >= 750) ? "1" : "0";
+  la2 = (analogRead(s2) >= 750) ? "1" : "0";
+  la3 = (analogRead(s3) >= 750) ? "1" : "0";
+  la4 = (analogRead(s4) >= 750) ? "1" : "0";
 
-  Serial.println(output);
-  
-  delay (500);
+  lasers = la1 + la2 + la3 + la4;
 
+  if (lasers != mlasers) {
+    mlasers = lasers;
+    output = sw12 +
+             sw11 +
+             sw10 +
+             sw9 +
+             sw8 +
+             sw7 +
+             sw6 +
+             sw5 +
+             sw4 +
+             sw3 +
+             sw2 +
+             sw1 +
+             "0" +
+             lasers;
+
+    Serial.println(output);
+  }
+  delay(150);
 }
