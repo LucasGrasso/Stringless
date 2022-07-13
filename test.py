@@ -15,9 +15,10 @@ with open('notes.csv', mode='r') as file:
 keys = notas.keys()
 
 for key in keys:
-    # Play note
-    note = notas[key]
-    SOUND = pygame.mixer.Sound(note)
-    SOUND.play() 
-    print(note.split("/")[1].split(".")[0].replace("S", "#"))
-    time.sleep(1/9)
+    while True:
+        # Play note
+        note = notas[key]
+        SOUND = pygame.mixer.Sound(note)
+        SOUND.play() 
+        print(note.split("/")[1].split(".")[0].replace("S", "#"))
+        time.sleep(1/1000)
