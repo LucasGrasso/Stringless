@@ -18,19 +18,22 @@ serialPort = serial.Serial(port = "COM3", baudrate=9600,
                            bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
                     
 while True :
-    if(serialPort.in_waiting > 0):
-        
-        serial_string = serialPort.readline().decode("utf-8")
-        serial_string = serial_string[0:-2]
+    try: 
+        if(serialPort.in_waiting > 0):
+            
+            serial_string = serialPort.readline().decode("utf-8")
+            serial_string = serial_string[0:-2]
 
-        
-        # Convert binary string from serial port to int
-        parsed_int = int(serial_string,2)
+            
+            # Convert binary string from serial port to int
+            parsed_int = int(serial_string,2)
 
-        #Convert int to string to check if key exists
-        str_parsed_int = str(parsed_int)
-        
-        if str_parsed_int in keys:  #Avoid Key Error
-            # Play note
-            note = notes[str_parsed_int]
-            note.play()
+            #Convert int to string to check if key exists
+            str_parsed_int = str(parsed_int)
+            
+            if str_parsed_int in keys:  #Avoid Key Error
+                # Play note
+                note = notes[str_parsed_int]
+                note.play()
+    except Exception as e:
+        print(e)
